@@ -1,4 +1,10 @@
 class PersonalCard
+
+  def create_css_doc
+
+  end
+
+
   def initialize
   @image       = get_image
   @name        = get_name
@@ -73,19 +79,28 @@ class PersonalCard
     folder_path = File.dirname(__FILE__)
     file_path   = folder_path + "/personalcards/pcard_#{@name}.html"
     file        = File.new(file_path, "w:UTF-8")
+    #создаем файл с именем pcard_<ФИО>
     
+    # "Заворачиваем" страницу в формат HTML
     file.puts("<!DOCKTYPE html>\n")
-    file.puts("<html>\n<head>\n<meta charset = \"UTF-8\">\n<lang=\"ru\">\n</head>\n")
+    file.puts("<html>\n")
+    file.puts("<head>\n<meta charset = \"UTF-8\">\n<lang=\"ru\">\n"+
+      "<link href = \"#{folder_path}/personalcards/stylecss\"" +
+      "rel = \"stylesheet\" type = \"text/css\">\n</head>\n")
 
-    file.puts("#{create_body}</html>")
+    file.puts("#{create_body}</body>\n")
+    file.puts"</html>"
     file.close
   end
 
   def create_body
-    img_tag  = "  <img src = \"#{@image}\" alt = \"Личное фото\"\n>"
+    tab      = " "*2 #табуляция для выравнивания тэгов
+    img_tag  = tab*2 + "<img src = \"#{@image}\" alt = \"Личное фото\"\n>"
+    #  создаем тэг для изображения
     p_tags   = [@name, @description, @phone, @email]
-    p_tags   = p_tags.map { |el| "  <p>#{el}</p>\n"}.join
-  "<body>\n#{img_tag + p_tags}</body>\n"
+    p_tags   = p_tags.map { |el| tab*2 + "<p>#{el}</p>\n"}.join
+    # в цикле создаем теги параграфы для остальных полей визитки
+    "#{tab}<div>\n#{img_tag + p_tags}  #{tab}</div>\n"
   end
 
 end
