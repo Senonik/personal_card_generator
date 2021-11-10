@@ -30,9 +30,19 @@ end
 
 def get_phone
   begin
-   puts "Номер телефона (только цифры):"
-   print(+7 ) phone = STDIN.gets.chomp
+   puts "Введите номер телефона (только цифры):"
+   print "+7 " phone = STDIN.gets.chomp
   end until phone =~ /\A\d{10}\z/
   # Проверяем, что пользователь ввел только 10 цифр телефона
   "Телефон: +7 #{phone[0,3]} #{phone[3,3]}-#{phone[6,2]}-#{phone[8,2]}"
+end
+
+
+def get_email
+ begin
+   puts "Введите адрес электронной почты:"
+   print "Email:" email = STDIN.gets.chomp.downcase
+  end until email =~ /\A(?=\A.{,100}\z)[\w\.\-]+@[a-z\d\-]+\.[a-z]{2,}\z/
+  # Проверяем, что пользователь ввел почту
+  "Email: #{email}"
 end
