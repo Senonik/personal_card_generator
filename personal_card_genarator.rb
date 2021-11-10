@@ -1,6 +1,12 @@
+require_relative "methods"
+
 puts "Введите данные для заполнения визитной карточки"
 data = []
-data << get_name << get_description << get_phone <<get_email
+data << get_name << get_description << get_phone << get_email
+
+puts data
+
+
 
 
 
