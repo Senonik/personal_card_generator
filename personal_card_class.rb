@@ -71,9 +71,7 @@ class PersonalCard
 
   def create_html
     folder_path = File.dirname(__FILE__)
-    p folder_path
     file_path   = folder_path + "/personalcards/pcard_#{@name}.html"
-    p file_path
     file        = File.new(file_path, "w:UTF-8")
 
     img_tag  = "  <img src = \"#{@image}\" alt = \"Личное фото\"\n>"
