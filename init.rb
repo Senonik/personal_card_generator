@@ -1,4 +1,4 @@
-require_relative "personal_card_class"
+require_relative "personal_card"
 
 puts "Введите данные для заполнения визитной карточки"
 personal_card = PersonalCard.new
